@@ -14,40 +14,40 @@ const appState = {
 // 电梯部件数据
 const elevatorComponents = [
     // 曳引系统
-    { id: 1, name: '曳引机', system: '曳引系统', icon: '⚙️', position: { top: '20px', right: '10px' }, description: '提供电梯运行的动力，通过钢丝绳和曳引轮的摩擦力驱动轿厢升降。' },
-    { id: 2, name: '曳引轮', system: '曳引系统', icon: '⭕', position: { top: '50px', right: '30px' }, description: '与钢丝绳配合，将曳引机的动力传递给轿厢和对重。' },
-    { id: 3, name: '钢丝绳', system: '曳引系统', icon: '📏', position: { top: '100px', left: '50%' }, description: '连接轿厢和对重，承受电梯的全部重量。' },
+    { id: 1, name: '曳引机', system: '曳引系统', icon: '⚙️', image: 'images/components/traction-machine.jpg', position: { top: '20px', right: '10px' }, description: '提供电梯运行的动力，通过钢丝绳和曳引轮的摩擦力驱动轿厢升降。' },
+    { id: 2, name: '曳引轮', system: '曳引系统', icon: '⭕', image: 'images/components/traction-machine.jpg', position: { top: '50px', right: '30px' }, description: '与钢丝绳配合，将曳引机的动力传递给轿厢和对重。' },
+    { id: 3, name: '钢丝绳', system: '曳引系统', icon: '📏', image: 'images/components/steel-rope.jpg', position: { top: '100px', left: '50%' }, description: '连接轿厢和对重，承受电梯的全部重量。' },
     
     // 导向系统
-    { id: 4, name: '导轨', system: '导向系统', icon: '📍', position: { top: '150px', left: '10px' }, description: '引导轿厢和对重沿固定方向运行，限制轿厢和对重的活动自由度。' },
-    { id: 5, name: '导靴', system: '导向系统', icon: '👟', position: { top: '200px', left: '20px' }, description: '安装在轿厢和对重上，与导轨配合保持运行的稳定性。' },
+    { id: 4, name: '导轨', system: '导向系统', icon: '📍', image: 'images/components/guide-rail.jpg', position: { top: '150px', left: '10px' }, description: '引导轿厢和对重沿固定方向运行，限制轿厢和对重的活动自由度。' },
+    { id: 5, name: '导靴', system: '导向系统', icon: '👟', image: 'images/components/guide-rail.jpg', position: { top: '200px', left: '20px' }, description: '安装在轿厢和对重上，与导轨配合保持运行的稳定性。' },
     
     // 轿厢系统
-    { id: 6, name: '轿厢', system: '轿厢系统', icon: '🚪', position: { top: '250px', left: '50%' }, description: '承载乘客和货物的箱体，是电梯的主要载重部件。' },
-    { id: 7, name: '轿架', system: '轿厢系统', icon: '🔲', position: { top: '300px', left: '45%' }, description: '支撑轿厢的金属框架结构。' },
-    { id: 8, name: '安全钳', system: '轿厢系统', icon: '🔒', position: { top: '350px', left: '40%' }, description: '当电梯超速下降时，安全钳会夹紧导轨使轿厢停止。' },
+    { id: 6, name: '轿厢', system: '轿厢系统', icon: '🚪', image: 'images/elevator/elevator-full.jpg', position: { top: '250px', left: '50%' }, description: '承载乘客和货物的箱体，是电梯的主要载重部件。' },
+    { id: 7, name: '轿架', system: '轿厢系统', icon: '🔲', image: 'images/components/steel-rope.jpg', position: { top: '300px', left: '45%' }, description: '支撑轿厢的金属框架结构。' },
+    { id: 8, name: '安全钳', system: '轿厢系统', icon: '🔒', image: 'images/components/safety-gear.jpg', position: { top: '350px', left: '40%' }, description: '当电梯超速下降时，安全钳会夹紧导轨使轿厢停止。' },
     
     // 门系统
-    { id: 9, name: '层门', system: '门系统', icon: '🚪', position: { top: '400px', left: '5px' }, description: '各楼层的电梯门，只有轿厢到达该层时才能打开。' },
-    { id: 10, name: '轿门', system: '门系统', icon: '🚪', position: { top: '400px', left: '45%' }, description: '轿厢上的门，与层门联动开关。' },
-    { id: 11, name: '门机', system: '门系统', icon: '🔧', position: { top: '230px', right: '10px' }, description: '控制电梯门的开关动作的装置。' },
+    { id: 9, name: '层门', system: '门系统', icon: '🚪', image: 'images/components/elevator-door.jpg', position: { top: '400px', left: '5px' }, description: '各楼层的电梯门，只有轿厢到达该层时才能打开。' },
+    { id: 10, name: '轿门', system: '门系统', icon: '🚪', image: 'images/components/elevator-door.jpg', position: { top: '400px', left: '45%' }, description: '轿厢上的门，与层门联动开关。' },
+    { id: 11, name: '门机', system: '门系统', icon: '🔧', image: 'images/components/motor.jpg', position: { top: '230px', right: '10px' }, description: '控制电梯门的开关动作的装置。' },
     
     // 重量平衡系统
-    { id: 12, name: '对重', system: '重量平衡系统', icon: '⚖️', position: { top: '450px', right: '20px' }, description: '平衡轿厢重量，减少曳引机的功率消耗。' },
+    { id: 12, name: '对重', system: '重量平衡系统', icon: '⚖️', image: 'images/components/steel-rope.jpg', position: { top: '450px', right: '20px' }, description: '平衡轿厢重量，减少曳引机的功率消耗。' },
     
     // 电力拖动系统
-    { id: 13, name: '电动机', system: '电力拖动系统', icon: '⚡', position: { top: '30px', right: '50px' }, description: '为曳引机提供动力的电机。' },
-    { id: 14, name: '变频器', system: '电力拖动系统', icon: '📊', position: { top: '70px', right: '60px' }, description: '控制电动机转速，实现电梯的平稳运行和节能。' },
+    { id: 13, name: '电动机', system: '电力拖动系统', icon: '⚡', image: 'images/components/motor.jpg', position: { top: '30px', right: '50px' }, description: '为曳引机提供动力的电机。' },
+    { id: 14, name: '变频器', system: '电力拖动系统', icon: '📊', image: 'images/components/control-panel.jpg', position: { top: '70px', right: '60px' }, description: '控制电动机转速，实现电梯的平稳运行和节能。' },
     
     // 电气控制系统
-    { id: 15, name: '控制柜', system: '电气控制系统', icon: '🎛️', position: { top: '120px', right: '70px' }, description: '电梯的大脑，控制电梯的所有运行逻辑。' },
-    { id: 16, name: '操纵盘', system: '电气控制系统', icon: '🔘', position: { top: '280px', left: '55%' }, description: '轿厢内的按钮面板，乘客通过它选择楼层。' },
-    { id: 17, name: '召唤按钮', system: '电气控制系统', icon: '🔴', position: { top: '420px', left: '0px' }, description: '各楼层的呼叫按钮，用于召唤电梯。' },
+    { id: 15, name: '控制柜', system: '电气控制系统', icon: '🎛️', image: 'images/components/control-panel.jpg', position: { top: '120px', right: '70px' }, description: '电梯的大脑，控制电梯的所有运行逻辑。' },
+    { id: 16, name: '操纵盘', system: '电气控制系统', icon: '🔘', image: 'images/components/control-panel.jpg', position: { top: '280px', left: '55%' }, description: '轿厢内的按钮面板，乘客通过它选择楼层。' },
+    { id: 17, name: '召唤按钮', system: '电气控制系统', icon: '🔴', image: 'images/components/control-panel.jpg', position: { top: '420px', left: '0px' }, description: '各楼层的呼叫按钮，用于召唤电梯。' },
     
     // 安全保护系统
-    { id: 18, name: '限速器', system: '安全保护系统', icon: '🛑', position: { top: '160px', right: '40px' }, description: '监测电梯运行速度，超速时触发安全钳动作。' },
-    { id: 19, name: '缓冲器', system: '安全保护系统', icon: '🔽', position: { bottom: '10px', left: '50%' }, description: '安装在井道底部，轿厢或对重撞击时起缓冲作用。' },
-    { id: 20, name: '安全触板', system: '安全保护系统', icon: '🚧', position: { top: '420px', left: '50%' }, description: '门上的安全装置，遇到障碍物时门会重新打开。' }
+    { id: 18, name: '限速器', system: '安全保护系统', icon: '🛑', image: 'images/components/safety-gear.jpg', position: { top: '160px', right: '40px' }, description: '监测电梯运行速度，超速时触发安全钳动作。' },
+    { id: 19, name: '缓冲器', system: '安全保护系统', icon: '🔽', image: 'images/components/safety-gear.jpg', position: { bottom: '10px', left: '50%' }, description: '安装在井道底部，轿厢或对重撞击时起缓冲作用。' },
+    { id: 20, name: '安全触板', system: '安全保护系统', icon: '🚧', image: 'images/components/elevator-door.jpg', position: { top: '420px', left: '50%' }, description: '门上的安全装置，遇到障碍物时门会重新打开。' }
 ];
 
 // 维修保养流程数据
@@ -175,6 +175,7 @@ const emergencyScenarios = [
         id: 'trapped',
         name: '乘客困梯救援',
         type: '困人救援',
+        image: 'images/scenarios/trapped-rescue.jpg',
         description: '电梯在运行中突然停止，乘客被困在轿厢内',
         steps: [
             { id: 1, icon: '📞', title: '接收报警', description: '接到困人报警后，立即记录时间、位置、被困人数等信息。', time: '1分钟', completed: false },
@@ -198,6 +199,7 @@ const emergencyScenarios = [
         id: 'power-outage',
         name: '停电应急处置',
         type: '停电应急',
+        image: 'images/scenarios/power-outage.jpg',
         description: '突然停电导致电梯停止运行',
         steps: [
             { id: 1, icon: '🔌', title: '确认停电', description: '确认是否为供电系统停电，检查配电箱和应急电源。', time: '1分钟', completed: false },
@@ -218,6 +220,7 @@ const emergencyScenarios = [
         id: 'fire',
         name: '火灾应急程序',
         type: '火灾应急',
+        image: 'images/scenarios/fire-emergency.jpg',
         description: '建筑物发生火灾时的电梯应急处置',
         steps: [
             { id: 1, icon: '🔥', title: '接收火警信号', description: '消防控制中心接收火警信号，立即启动应急预案。', time: '立即', completed: false },
@@ -239,6 +242,7 @@ const emergencyScenarios = [
         id: 'flood',
         name: '水浸应急处理',
         type: '水浸应急',
+        image: 'images/scenarios/power-outage.jpg',
         description: '电梯井道或机房进水的应急处理',
         steps: [
             { id: 1, icon: '💧', title: '发现水浸', description: '通过水浸传感器或人工发现井道或机房进水。', time: '立即', completed: false },
@@ -560,7 +564,7 @@ function showSystemCategories() {
                         ${components.map(comp => `
                             <div class="component-card" onclick="showComponentDetail(${comp.id})">
                                 <div class="component-image">
-                                    <span style="font-size: 4em;">${comp.icon}</span>
+                                    ${comp.image ? `<img src="${comp.image}" alt="${comp.name}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">` : `<span style="font-size: 4em;">${comp.icon}</span>`}
                                 </div>
                                 <div class="component-info">
                                     <h3>${comp.name}</h3>
@@ -585,7 +589,7 @@ function showComponentDetail(componentId) {
     
     modalBody.innerHTML = `
         <div style="text-align: center; margin-bottom: 30px;">
-            <div style="font-size: 6em; margin-bottom: 20px;">${component.icon}</div>
+            ${component.image ? `<img src="${component.image}" alt="${component.name}" style="width: 100%; max-width: 500px; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">` : `<div style="font-size: 6em; margin-bottom: 20px;">${component.icon}</div>`}
             <h2 style="color: var(--primary-color); margin-bottom: 10px;">${component.name}</h2>
             <span class="component-system" style="font-size: 1em;">${component.system}</span>
         </div>
@@ -856,24 +860,27 @@ function showEmergencyScenarios() {
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;">
             ${emergencyScenarios.map(scenario => `
                 <div class="emergency-scenario">
-                    <div class="scenario-header">
-                        <h3>${scenario.name}</h3>
-                        <div class="scenario-type">${scenario.type}</div>
-                        <p style="margin-top: 10px; font-size: 0.95em;">${scenario.description}</p>
-                    </div>
-                    
-                    <div style="padding: 20px; background: var(--light-bg); border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">操作步骤</h4>
-                        <p style="color: var(--light-text);">共 ${scenario.steps.length} 个步骤</p>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <button class="action-btn" onclick="startEmergencyDrill('${scenario.id}')">
-                            开始演练
-                        </button>
-                        <button class="action-btn" onclick="viewScenarioDetail('${scenario.id}')">
-                            查看详情
-                        </button>
+                    ${scenario.image ? `<img src="${scenario.image}" alt="${scenario.name}">` : ''}
+                    <div style="padding: 20px 30px;">
+                        <div class="scenario-header" style="margin: 0 0 20px 0;">
+                            <h3>${scenario.name}</h3>
+                            <div class="scenario-type">${scenario.type}</div>
+                            <p style="margin-top: 10px; font-size: 0.95em;">${scenario.description}</p>
+                        </div>
+                        
+                        <div style="padding: 20px; background: var(--light-bg); border-radius: 8px; margin-bottom: 15px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 10px;">操作步骤</h4>
+                            <p style="color: var(--light-text);">共 ${scenario.steps.length} 个步骤</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button class="action-btn" onclick="startEmergencyDrill('${scenario.id}')">
+                                开始演练
+                            </button>
+                            <button class="action-btn" onclick="viewScenarioDetail('${scenario.id}')">
+                                查看详情
+                            </button>
+                        </div>
                     </div>
                 </div>
             `).join('')}
@@ -1433,6 +1440,7 @@ function viewScenarioDetail(scenarioId) {
     const modalBody = document.getElementById('modalBody');
     
     modalBody.innerHTML = `
+        ${scenario.image ? `<img src="${scenario.image}" alt="${scenario.name}" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">` : ''}
         <h2 style="color: var(--primary-color); margin-bottom: 20px;">${scenario.name}</h2>
         <div class="scenario-type" style="margin-bottom: 20px;">${scenario.type}</div>
         <p style="font-size: 1.1em; margin-bottom: 30px;">${scenario.description}</p>
