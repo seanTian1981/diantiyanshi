@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电梯教学演示系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="top-nav">
+        <div class="logo">
+            <span class="logo-icon">🏢</span>
+            <h1>电梯教学演示系统</h1>
+        </div>
+        <nav class="main-nav">
+            <button class="nav-btn active" data-module="recognition">部件认知</button>
+            <button class="nav-btn" data-module="maintenance">维修保养</button>
+            <button class="nav-btn" data-module="emergency">应急救援</button>
+        </nav>
+        <div class="user-info">
+            <span class="user-name">教学模式</span>
+            <button class="reset-btn" onclick="resetProgress()">重置进度</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- 左侧菜单 -->
+        <aside class="sidebar" id="sidebar">
+            <!-- 动态加载菜单内容 -->
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="content-area" id="contentArea">
+            <!-- 动态加载内容 -->
+        </main>
+    </div>
+
+    <!-- 底部状态栏 -->
+    <footer class="status-bar">
+        <div class="status-info">
+            <span id="statusText">欢迎使用电梯教学演示系统</span>
+        </div>
+        <div class="progress-info">
+            <span id="progressText">学习进度: 0%</span>
+        </div>
+    </footer>
+
+    <!-- 模态框 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示弹窗 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
