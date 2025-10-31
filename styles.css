@@ -382,6 +382,13 @@ body {
     overflow: hidden;
 }
 
+.component-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .component-image::before {
     content: '';
     position: absolute;
@@ -702,10 +709,23 @@ body {
 /* 应急救援 */
 .emergency-scenario {
     background: white;
-    padding: 30px;
+    padding: 0;
     border-radius: 12px;
     box-shadow: var(--shadow);
     margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.emergency-scenario img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.emergency-scenario .scenario-header,
+.emergency-scenario > div:not(img) {
+    padding: 20px 30px;
 }
 
 .scenario-header {

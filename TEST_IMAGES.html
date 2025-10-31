@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片资源测试页面</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .image-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .image-info {
+            padding: 15px;
+        }
+        .image-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .image-size {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ 电梯教学演示系统 - 图片资源测试</h1>
+
+    <div class="section">
+        <h2>📊 总览</h2>
+        <p>本页面用于测试所有图片资源是否正确加载。</p>
+        <p>图片总数: <strong id="totalImages">0</strong></p>
+        <p>加载成功: <strong id="successImages" style="color: green;">0</strong></p>
+        <p>加载失败: <strong id="failedImages" style="color: red;">0</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>⚙️ 电梯部件图片</h2>
+        <div class="image-grid" id="componentsGrid"></div>
+    </div>
+
+    <div class="section">
+        <h2>🚨 应急场景图片</h2>
+        <div class="image-grid" id="scenariosGrid"></div>
+    </div>
+
+    <div class="section">
+        <h2>🔧 维修工具图片</h2>
+        <div class="image-grid" id="toolsGrid"></div>
+    </div>
+
+    <div class="section">
+        <h2>🏢 电梯整体图片</h2>
+        <div class="image-grid" id="elevatorGrid"></div>
+    </div>
+
+    <script>
+        const images = {
+            components: [
+                { name: '曳引机', file: 'traction-machine.jpg' },
+                { name: '钢丝绳', file: 'steel-rope.jpg' },
+                { name: '控制面板', file: 'control-panel.jpg' },
+                { name: '电梯门', file: 'elevator-door.jpg' },
+                { name: '电动机', file: 'motor.jpg' },
+                { name: '安全装置', file: 'safety-gear.jpg' },
+                { name: '导轨', file: 'guide-rail.jpg' }
+            ],
+            scenarios: [
+                { name: '困人救援', file: 'trapped-rescue.jpg' },
+                { name: '火灾应急', file: 'fire-emergency.jpg' },
+                { name: '停电应急', file: 'power-outage.jpg' }
+            ],
+            tools: [
+                { name: '扳手', file: 'wrench.jpg' },
+                { name: '万用表', file: 'multimeter.jpg' }
+            ],
+            elevator: [
+                { name: '电梯全景', file: 'elevator-full.jpg' }
+            ]
+        };
+
+        let totalCount = 0;
+        let successCount = 0;
+        let failedCount = 0;
+
+        function createImageCard(name, path, folder) {
+            const card = document.createElement('div');
+            card.className = 'image-card';
+            
+            const img = document.createElement('img');
+            img.src = path;
+            img.alt = name;
+            
+            const info = document.createElement('div');
+            info.className = 'image-info';
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'image-name';
+            nameDiv.textContent = name;
+            
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'image-size';
+            statusDiv.innerHTML = '<span class="status">加载中...</span>';
+            
+            info.appendChild(nameDiv);
+            info.appendChild(statusDiv);
+            card.appendChild(img);
+            card.appendChild(info);
+            
+            totalCount++;
+            
+            img.onload = function() {
+                successCount++;
+                updateStats();
+                const size = this.naturalWidth + 'x' + this.naturalHeight;
+                statusDiv.innerHTML = `<span class="status success">✓ ${size}</span>`;
+            };
+            
+            img.onerror = function() {
+                failedCount++;
+                updateStats();
+                statusDiv.innerHTML = `<span class="status error">✗ 加载失败</span>`;
+            };
+            
+            return card;
+        }
+
+        function updateStats() {
+            document.getElementById('totalImages').textContent = totalCount;
+            document.getElementById('successImages').textContent = successCount;
+            document.getElementById('failedImages').textContent = failedCount;
+        }
+
+        function loadImages() {
+            // 加载部件图片
+            const componentsGrid = document.getElementById('componentsGrid');
+            images.components.forEach(item => {
+                const path = `images/components/${item.file}`;
+                componentsGrid.appendChild(createImageCard(item.name, path, 'components'));
+            });
+
+            // 加载场景图片
+            const scenariosGrid = document.getElementById('scenariosGrid');
+            images.scenarios.forEach(item => {
+                const path = `images/scenarios/${item.file}`;
+                scenariosGrid.appendChild(createImageCard(item.name, path, 'scenarios'));
+            });
+
+            // 加载工具图片
+            const toolsGrid = document.getElementById('toolsGrid');
+            images.tools.forEach(item => {
+                const path = `images/tools/${item.file}`;
+                toolsGrid.appendChild(createImageCard(item.name, path, 'tools'));
+            });
+
+            // 加载电梯图片
+            const elevatorGrid = document.getElementById('elevatorGrid');
+            images.elevator.forEach(item => {
+                const path = `images/elevator/${item.file}`;
+                elevatorGrid.appendChild(createImageCard(item.name, path, 'elevator'));
+            });
+
+            updateStats();
+        }
+
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', loadImages);
+    </script>
+</body>
+</html>
